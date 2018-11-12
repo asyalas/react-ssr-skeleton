@@ -1,5 +1,5 @@
 {
-  "name": "create-next-example-app",
+  "name": "react-ssr-skeleton",
   "lint-staged": {
     "pages/**/*.{js,jsx}": [
       "eslint",
@@ -51,6 +51,7 @@
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-relay": "0.0.28",
     "node-sass": "^4.10.0",
+    "open-browser-webpack-plugin": "0.0.5",
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-preset-env": "^6.4.0",
     "rimraf": "^2.6.2",

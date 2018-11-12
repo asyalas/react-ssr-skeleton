@@ -1,6 +1,8 @@
 
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const {  WebpackBundleSizeAnalyzerPlugin } = require('webpack-bundle-size-analyzer');
+
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const paths =  require('./paths.js');
 const { ANALYZE } = process.env;
 /**
@@ -75,6 +77,11 @@ const webpackConfig = {
       extensions: ['.js', '.jsx', 'ts', 'tsx', '.json', '.png'],
       alias:paths.alias
     };
+    //在开发环境下默认打开浏览器
+    if (dev) {
+      
+      // config.plugins.push(new OpenBrowserPlugin({ }));
+    }
     
     // Fixes npm packages that depend on `fs` module
     config.node = {
