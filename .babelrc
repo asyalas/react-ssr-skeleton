@@ -1,0 +1,12 @@
+{
+  "presets": [ 
+    "next/babel", 
+    "@zeit/next-typescript/babel"
+  ],
+  "plugins": [
+   "react-html-attrs",
+   ["@babel/plugin-proposal-decorators", { "legacy": true }],
+   ["@babel/plugin-proposal-class-properties", { "loose": true }],
+   "@babel/transform-async-to-generator"
+ ]
+}
