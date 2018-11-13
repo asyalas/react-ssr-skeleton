@@ -4,7 +4,7 @@
     "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
-      "componets/*": ["./components/*"]  
+      "components/*": ["./src/components/*"]  
     },
     "outDir": "build/dist",
     "module": "esnext",
@@ -30,9 +30,10 @@
     "noUnusedLocals": true
   },
   "include": [
-    "pages",
-    "components",
-    "typings"
+    "src/pages",
+    "src/components",
+    "src/typings",
+    "config"
   ],
   "exclude": [
     "__old/**",

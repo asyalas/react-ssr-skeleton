@@ -9,7 +9,7 @@ const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 module.exports = {
   alias:{
-    'components' : resolveApp('components'),
-    'static':resolveApp('static')
+    'components' : resolveApp('src/components'),
+    'static':resolveApp('src/static')
   }
 };
