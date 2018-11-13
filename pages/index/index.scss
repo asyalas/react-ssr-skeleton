@@ -1,4 +1,11 @@
 
+ .flex{
+   display: flex;
+   align-items: center;
+   .smallImg{
+     width: 30px;
+   }
+ }
  .hero {
         width: 100%;
         color: red;

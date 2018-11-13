@@ -2,7 +2,6 @@
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const {  WebpackBundleSizeAnalyzerPlugin } = require('webpack-bundle-size-analyzer');
 
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const paths =  require('./paths.js');
 const { ANALYZE } = process.env;
 /**
@@ -45,7 +44,7 @@ const addAnalyzePlugin = (ANALYZE, config) => {
  * 添加eslint
  */
 
-const addEslintPlugin = config => {
+const addEslintRule = config => {
   config.module.rules.push({
     test: /\.(jsx|tsx)$/,
     enforce: "pre",
@@ -58,6 +57,33 @@ const addEslintPlugin = config => {
   });
 };
 
+/**
+ * 添加对静态资源的处理
+ * url-loader file-loader
+ */
+const addStaticRule = config => {
+  config.module.rules.unshift({
+    test: /\.(png|jpg|svg|eot|otf|ico|ttf|woff|woff2)$/,
+    use: {
+      loader: 'url-loader',
+      options: {
+        limit: 20000,
+        name: '../static/[name].[hash:8].[ext]'
+      }
+    }
+  });
+  config.module.rules.push({
+    loader: require.resolve('file-loader'),
+    // Exclude `js` files to keep "css" loader working as it injects
+    // it's runtime that would otherwise processed through "file" loader.
+    // Also exclude `html` and `json` extensions so they get processed
+    // by webpacks internal loaders.
+    exclude: [/\.(js|jsx|ts|tsx|mjs|css|scss)$/, /\.(png|jpg|svg|eot|otf|ico|ttf|woff|woff2)$/, /\.html$/, /\.json$/],
+    options: {
+      name: '../static/[name].[hash:8].[ext]'
+    }
+  });
+}; 
 
 /***
  * webpack原始的配置
@@ -69,7 +95,9 @@ const webpackConfig = {
       addAnalyzePlugin(ANALYZE, config);
     }
     //添加eslint
-    addEslintPlugin(config);
+    addEslintRule(config);
+    //添加对静态资源的处理
+    addStaticRule(config);
 
     //自定义webpack的resolve
     config.resolve = {
@@ -77,16 +105,16 @@ const webpackConfig = {
       extensions: ['.js', '.jsx', 'ts', 'tsx', '.json', '.png'],
       alias:paths.alias
     };
-    //在开发环境下默认打开浏览器
-    if (dev) {
-      
-      // config.plugins.push(new OpenBrowserPlugin({ }));
-    }
     
     // Fixes npm packages that depend on `fs` module
     config.node = {
       fs: 'empty'
     };
+
+    console.log('=======================');
+    console.log(config.module.rules);
+
+    console.log('=======================');
     return config;
   }
 };
@@ -106,9 +134,11 @@ const withCss = fn(require('@zeit/next-css'))(cssModules);
 
 /**
  * 配置typescript
- * 
  */
 
 const withTypescript = fn(require('@zeit/next-typescript'))();
+
+
+
 
 module.exports = withTypescript(withCss(withSass(webpackConfig)));

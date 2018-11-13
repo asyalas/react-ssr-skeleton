@@ -1,20 +1,18 @@
-import Link from 'next/link';
-import React from 'react';
-
 /** 
  * 提供两个有功能的基础类
  * 通过创建./pages/_app.js文件，重写 App 模块
  */
-import { Container } from 'next/app';
-import Css from './index.css';
-import Styles from './index.scss';
-
 // 动态注入组件
 // import dynamic from 'next/dynamic';
 import Head from 'components/head';
 import Nav from 'components/nav';
-
-export default  class Home extends React.Component {
+import { Container } from 'next/app';
+import Link from 'next/link';
+import React from 'react';
+import smallImg from 'static/img/market.png';
+import Css from './index.css';
+import Styles from './index.scss';
+export default class Home extends React.Component {
   /**
    * getInitialProps
    * 当页面初次加载时，getInitialProps只会在服务端执行一次。
@@ -27,18 +25,26 @@ export default  class Home extends React.Component {
     return {};
   }
   render() {
+
     return (
       <Container>
         <Head title="Home" />
         <Nav />
-    
+
         <div className={Styles.hero}>
           <h1 className={Styles.title}>Welcome to Next!</h1>
-          <img src="/static/img/background-min.png"/>
+          <div className={Styles.flex} >
+            <p>大图：</p>
+            <img src="/static/img/background-min.png" />
+          </div>
+          <div className={Styles.flex} >
+            <p>小图：</p>
+            <img src={smallImg} className={Styles.smallImg} />
+          </div>
           <p className={Styles.description} >
             To get started, edit <code>pages/index.js</code> and save to reload.
           </p>
-    
+
           <div className={Styles.row} >
             {
               /**
@@ -71,7 +77,7 @@ export default  class Home extends React.Component {
             </Link>
           </div>
         </div>
-    
+
       </Container>
     );
   }

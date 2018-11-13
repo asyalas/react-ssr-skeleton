@@ -21,11 +21,9 @@
     "jsx-no-lambda": false,
     "member-access": false,
     "object-literal-sort-keys": false,
-    "rxjs-collapse-imports": true,
     "jsx-no-string-ref": false,
     // "rxjs-pipeable-operators-only": true,
     // "rxjs-no-static-observable-methods": true,
-    "rxjs-proper-imports": true,
     "max-classes-per-file": false,
     "interface-name": false,
     "align": [

@@ -1,11 +1,11 @@
 {
   "name": "react-ssr-skeleton",
   "lint-staged": {
-    "pages/**/*.{js,jsx}": [
+    "pages/**/*.{js,jsx,ts,tsx}": [
       "eslint",
       "git add"
     ],
-    "components/**/*.{js,jsx}": [
+    "components/**/*.{js,jsx,ts,tsx}": [
       "eslint",
       "git add"
     ]
@@ -14,7 +14,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "export": "rimraf .next && rimraf out && npm run build && next export -o dist",
+    "export": "rimraf .next && rimraf out && rimraf dist && npm run build && next export -o dist",
     "analyze:size": "cross-env ANALYZE=SIZE next build",
     "analyze:bundles": "cross-env ANALYZE=BUNDLES next build",
     "precommit": "lint-staged"
@@ -50,8 +50,8 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-relay": "0.0.28",
+    "file-loader": "^2.0.0",
     "node-sass": "^4.10.0",
-    "open-browser-webpack-plugin": "0.0.5",
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-preset-env": "^6.4.0",
     "rimraf": "^2.6.2",
@@ -59,6 +59,7 @@
     "tslint-config-prettier": "^1.15.0",
     "tslint-react": "^3.6.0",
     "typescript": "^3.1.6",
+    "url-loader": "^1.1.2",
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-bundle-size-analyzer": "^2.7.0"
   }
