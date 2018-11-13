@@ -17,8 +17,8 @@
     "build:after":"rimraf src/.next && rimraf src/next.config.js && rimraf src/paths.js ",
     "start": "next start src",
     "export": "rimraf dist &&npm run build&& next export src -o dist && npm run build:after",
-    "analyze:size": "cross-env ANALYZE=SIZE next build",
-    "analyze:bundles": "cross-env ANALYZE=BUNDLES next build",
+    "analyze:size": " npm run build:before && cross-env ANALYZE=SIZE next build src  ",
+    "analyze:bundles": "npm run build:before && cross-env ANALYZE=BUNDLES next build src",
     "precommit": "lint-staged"
   },
   "dependencies": {

@@ -11,5 +11,6 @@ module.exports = {
   alias:{
     'components' : resolveApp('src/components'),
     'static':resolveApp('src/static')
-  }
+  },
+  stats:resolveApp('src/stats.txt')
 };

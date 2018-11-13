@@ -36,7 +36,7 @@ const addAnalyzePlugin = (ANALYZE, config) => {
       );
       break;
     case 'SIZE':
-      config.plugins.push(new WebpackBundleSizeAnalyzerPlugin('stats.txt'));
+      config.plugins.push(new WebpackBundleSizeAnalyzerPlugin(paths.stats));
       break;
   }
 }; 
@@ -110,11 +110,6 @@ const webpackConfig = {
     config.node = {
       fs: 'empty'
     };
-
-    console.log('=======================');
-    console.log(config.module.rules);
-
-    console.log('=======================');
     return config;
   }
 };
