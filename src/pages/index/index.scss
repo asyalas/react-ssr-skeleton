@@ -2,8 +2,13 @@
  .flex{
    display: flex;
    align-items: center;
+   justify-content: center;
+   width: 100%;
    .smallImg{
      width: 30px;
+   }
+   button{
+     display: block
    }
  }
  .hero {

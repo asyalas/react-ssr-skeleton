@@ -12,7 +12,7 @@ module.exports = {
     "System":true,
   },
   "rules": {
-    // "no-console": "off",
+    "no-console": "off",
     "semi": 2,
     "indent": [2, 2, { "SwitchCase": 1 }],
     "space-before-function-paren": 0,

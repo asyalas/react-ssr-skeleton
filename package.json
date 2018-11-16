@@ -12,16 +12,18 @@
   },
   "scripts": {
     "dev": "node server/index.js",
-    "build:before":"cpx \"config/next.config.js\" \"src/\" -C && cpx \"config/paths.js\" \"src/\" -C ",
+    "build:before": "cpx \"config/next.config.js\" \"src/\" -C && cpx \"config/paths.js\" \"src/\" -C ",
     "build": "npm run build:before && next build src ",
-    "build:after":"rimraf src/.next && rimraf src/next.config.js && rimraf src/paths.js ",
+    "build:after": "rimraf src/.next && rimraf src/next.config.js && rimraf src/paths.js ",
     "start": "next start src",
-    "export": "rimraf dist &&npm run build&& next export src -o dist && npm run build:after",
+    "export": "rimraf dist &&npm run build&& next export src -o dist && npm run build:after && node server/app.js",
     "analyze:size": " npm run build:before && cross-env ANALYZE=SIZE next build src  ",
     "analyze:bundles": "npm run build:before && cross-env ANALYZE=BUNDLES next build src",
     "precommit": "lint-staged"
   },
   "dependencies": {
+    "mobx": "^5.6.0",
+    "mobx-react": "^5.3.6",
     "next": "^7.0.2",
     "react": "^16.6.1",
     "react-dom": "^16.6.1"

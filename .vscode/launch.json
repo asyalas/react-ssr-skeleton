@@ -19,7 +19,7 @@
       "type": "node",
       "request": "launch",
       "name": "启动程序",
-      "program": "${workspaceFolder}/server/index.js"
+      "program": "${workspaceFolder}/server/app.js"
     }
   ]
 }

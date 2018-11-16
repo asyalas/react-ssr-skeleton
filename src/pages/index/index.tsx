@@ -6,13 +6,17 @@
 // import dynamic from 'next/dynamic';
 import Head from 'components/head';
 import Nav from 'components/nav';
+import { inject, observer } from 'mobx-react';
 import { Container } from 'next/app';
 import Link from 'next/link';
 import React from 'react';
 import smallImg from 'static/img/market.png';
 import Css from './index.css';
 import Styles from './index.scss';
-export default class Home extends React.Component {
+
+@inject('store')
+@observer
+class Home extends React.Component {
   /**
    * getInitialProps
    * 当页面初次加载时，getInitialProps只会在服务端执行一次。
@@ -21,11 +25,19 @@ export default class Home extends React.Component {
    * @param {object} params 可以从获取res,req,pathname,query,asPath等对象
    * @return {object} 返回一个对象，在this.props中获取
    */
-  static async getInitialProps() {
-    return {};
+  static async getInitialProps(context) {
+    return {
+      store1 : context.ctx
+    };
+  }
+  add = () => {
+    this.props.store.add(); 
+  }
+  asyncAdd = () => {
+    this.props.store.asyncAdd(); 
   }
   render() {
-
+    const {num} = this.props.store;
     return (
       <Container>
         <Head title="Home" />
@@ -40,6 +52,11 @@ export default class Home extends React.Component {
           <div className={Styles.flex} >
             <p>小图：</p>
             <img src={smallImg} className={Styles.smallImg} />
+          </div>
+          <div className={Styles.flex} >
+            <div>mobx:{num}</div>
+            <button onClick={this.add}>添加</button> 
+            <button onClick={this.asyncAdd}>异步添加</button>
           </div>
           <p className={Styles.description} >
             To get started, edit <code>pages/index.js</code> and save to reload.
@@ -82,3 +99,4 @@ export default class Home extends React.Component {
     );
   }
 }
+export default Home;

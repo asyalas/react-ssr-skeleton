@@ -12,5 +12,6 @@ module.exports = {
     'components' : resolveApp('src/components'),
     'static':resolveApp('src/static')
   },
-  stats:resolveApp('src/stats.txt')
+  stats:resolveApp('src/stats.txt'),
+  dist:resolveApp('dist')
 };

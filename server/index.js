@@ -16,7 +16,7 @@ const conf = require( '../config/next.config');
 const getPort = require( 'get-port');
 const log = require('./utils/log');
 const tcp = require('./utils/tcp');
-const utils = require('./utils');
+// const utils = require('./utils');
 
 /**
  * 获取当前环境
@@ -65,7 +65,7 @@ nextApp.prepare()
     app.use(router.allowedMethods());
     //检查数组里的端口是否可用，如果都不可用，则随机分配一个可用的端口
     (async () => {
-      const port = utils.mergeArr(tcp.port, [3000, 3001, 3002]);
+      const port = tcp.port;
       const tcpPort = await getPort({port:port});
       app.listen(tcpPort, tcp.host, () => {
         log.info(`API server listening on http://${tcp.host}:${tcpPort}, in ${env}`);
