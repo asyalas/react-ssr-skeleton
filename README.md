@@ -4,7 +4,7 @@
 
 ## 技术栈
 
-react@16.6.1 + next@7.0.2 + koa@2.6.2 + typescript@3.1.6 + sass + lint
+react@16.6.1 + next@7.0.2 + koa@2.6.2 + typescript@3.1.6 + mobx + sass + lint
 
 ## 功能
 
@@ -13,3 +13,4 @@ react@16.6.1 + next@7.0.2 + koa@2.6.2 + typescript@3.1.6 + sass + lint
 - [x] webpack bundle检测
 - [x] 导出静态html
 - [x] 支持ts + tslint代码检查
+- [x] mobx管理全局数据
