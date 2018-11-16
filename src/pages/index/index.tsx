@@ -25,7 +25,7 @@ class Home extends React.Component {
    * @param {object} params 可以从获取res,req,pathname,query,asPath等对象
    * @return {object} 返回一个对象，在this.props中获取
    */
-  static async getInitialProps(context) {
+  static async getInitialProps(context: any) {
     return {
       store1 : context.ctx
     };
@@ -90,6 +90,12 @@ class Home extends React.Component {
               <a className={Css.card}>
                 <h3>Create Next App &rarr;</h3>
                 <p>Was this tool helpful? Let us know how we can improve it</p>
+              </a>
+            </Link>
+            <Link href="./page">
+              <a className={Css.card}>
+                <h3>下一页</h3>
+                <p>你懂的</p>
               </a>
             </Link>
           </div>
