@@ -1,12 +1,20 @@
 {
   "name": "react-ssr-skeleton",
   "lint-staged": {
-    "pages/**/*.{js,jsx,ts,tsx}": [
+    "pages/**/*.{js,jsx}": [
       "eslint",
       "git add"
     ],
-    "components/**/*.{js,jsx,ts,tsx}": [
+    "components/**/*.{js,jsx}": [
       "eslint",
+      "git add"
+    ],
+    "pages/**/*.{ts,tsx}": [
+      "tslint",
+      "git add"
+    ],
+    "components/**/*.{ts,tsx}": [
+      "tslint",
       "git add"
     ]
   },
